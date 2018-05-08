@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _arrTitle = @[@"ViewController",@"View",@"Show Dot",@"A",@"Message Count",@"Label",@"Long Long Long Long Long Long Text",@"你是谁",@"果然是法国",@"晓不得"];
-    _segMenu = [[ZXSegmentMenu alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height - 64) menuHeight:40 menuCountAtOnePage:0 parentController:self];
+    _segMenu = [[ZXSegmentMenu alloc] initWithFrame:UIScreen.mainScreen.bounds menuHeight:40 menuCountAtOnePage:0 parentController:self];
     _segMenu.delegate = self;
     _segMenu.datasource = self;
     [self.view addSubview:_segMenu];

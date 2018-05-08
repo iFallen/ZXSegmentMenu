@@ -2,7 +2,7 @@
 //  ZXActuallyItemSizeViewController.m
 //  ZXSegmentMenu
 //
-//  Created by screson on 2018/5/8.
+//  Created by JuanFelix on 2018/5/8.
 //  Copyright © 2018年 screson. All rights reserved.
 //
 
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _segMenu = [[ZXSegmentMenu alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height - 64) menuHeight:40 menuCountAtOnePage:0 parentController:self];
+    _segMenu = [[ZXSegmentMenu alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 400) menuHeight:40 menuCountAtOnePage:0 parentController:self];
     _segMenu.delegate = self;
     _segMenu.datasource = self;
     [self.view addSubview:_segMenu];

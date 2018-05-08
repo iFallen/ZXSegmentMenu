@@ -8,11 +8,14 @@
 
 #import "ZXSegmentMenu.h"
 #import "ZXSegMenuCell.h"
+#define ZX_IS_iPhoneX   ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
 
 @interface ZXSegmentMenu () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 @property (nonatomic,weak) UIViewController * parentController;
 @property (nonatomic, assign) CGFloat menuHeight;
 @property (nonatomic, assign) CGFloat zxWidth;
+@property (nonatomic, assign) CGFloat zxHeight;
 @property (nonatomic, assign) CGFloat zxContentHeight;
 @property (nonatomic,strong) NSMutableArray<ZXSegMenuModel *> * arrMenuModel;
 @property (nonatomic,strong) NSMutableArray<UIView *> * childViews;
@@ -26,17 +29,33 @@
 
 @implementation ZXSegmentMenu
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frameA
                    menuHeight:(CGFloat)menuHeight
            menuCountAtOnePage:(NSInteger)mCount
              parentController:(UIViewController *)pVC{
-    if (self = [super initWithFrame: frame]) {
+    CGFloat navBarHeight = 0;
+    CGFloat tabBarHeight = 0;
+    if (frameA.size.height == UIScreen.mainScreen.bounds.size.height) {
+        if (pVC.navigationController) {
+            navBarHeight = pVC.navigationController.navigationBar.frame.size.height;
+            navBarHeight += 20;
+        }
+        if (pVC.tabBarController) {
+            tabBarHeight = pVC.tabBarController.tabBar.frame.size.height;
+        }
+        if (ZX_IS_iPhoneX) {
+            navBarHeight += 24;
+        }
+    }
+    self.zxHeight = frameA.size.height - navBarHeight - tabBarHeight;
+    self.zxWidth = frameA.size.width;
+    CGRect tempFrame = CGRectMake(frameA.origin.x, frameA.origin.y, self.zxWidth, self.zxHeight);
+    if (self = [super initWithFrame: tempFrame]) {
         self.arrMenuModel = nil;
         self.childViews = nil;
         self.childViewControllers = nil;
         self.menuHeight = menuHeight;
-        self.zxWidth = frame.size.width;
-        self.zxContentHeight = frame.size.height - menuHeight;
+        self.zxContentHeight = self.zxHeight - menuHeight;
         self.dataCount = 0;
         self.parentController = pVC;
         self.selectedIndex = 0;
@@ -189,6 +208,7 @@
 
 #pragma mark - UIScrollViewDelegate
 
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGPoint offset = scrollView.contentOffset;
     NSInteger page = floor((offset.x + self.zxWidth / 2) / self.zxWidth);
@@ -196,8 +216,10 @@
         [self.ccvList selectItemAtIndexPath:[NSIndexPath indexPathForRow:page inSection:0] animated:true scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
         self.selectedIndex = page;
     }
-
+    
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+}
 
 @end

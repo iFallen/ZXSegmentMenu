@@ -17,7 +17,7 @@ _segMenu.delegate = self;
 _segMenu.datasource = self;
 [self.view addSubview:_segMenu];
 ```
-
+- `frame `: 如果等于屏幕尺寸(UIScreen.mainScreen.bounds)，会自动减去Tabbar和NavBar高度
 - `menuHeight`: 菜单高度
 -  `menuCountAtOnePage `：大于0 时，菜单宽 = size / mCount 。等于0时 菜单宽 = 自然宽度
 -  `parentController `：用于addChildViewController
