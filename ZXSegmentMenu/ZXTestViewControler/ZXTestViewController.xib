@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZXTestViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiT-zI-Ysa">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="6kn-bU-tev"/>
+                    </constraints>
+                    <state key="normal" title="Join"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jmn-uE-xGr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="XjY-op-1Iw"/>
+                        <outlet property="delegate" destination="-1" id="jt2-h9-ewq"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jmn-uE-xGr" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="5Ur-ta-asP"/>
+                <constraint firstItem="DiT-zI-Ysa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KfN-EE-w7a"/>
+                <constraint firstItem="DiT-zI-Ysa" firstAttribute="top" secondItem="Jmn-uE-xGr" secondAttribute="bottom" id="MG0-vB-w1v"/>
+                <constraint firstItem="Jmn-uE-xGr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qtv-Pa-l4Z"/>
+                <constraint firstItem="Jmn-uE-xGr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kzH-LS-Rmz"/>
+                <constraint firstItem="DiT-zI-Ysa" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="mG3-Qs-mpH"/>
+                <constraint firstAttribute="trailing" secondItem="DiT-zI-Ysa" secondAttribute="trailing" id="snC-Xe-Zlr"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>
