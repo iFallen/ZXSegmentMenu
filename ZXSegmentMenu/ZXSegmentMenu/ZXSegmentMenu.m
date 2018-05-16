@@ -213,13 +213,14 @@
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGPoint offset = scrollView.contentOffset;
-    NSInteger page = floor((offset.x + self.zxWidth / 2) / self.zxWidth);
-    if (page != self.selectedIndex) {
-        [self.ccvList selectItemAtIndexPath:[NSIndexPath indexPathForRow:page inSection:0] animated:true scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-        self.selectedIndex = page;
+    if (scrollView == self.zxContentView) {
+        CGPoint offset = scrollView.contentOffset;
+        NSInteger page = floor((offset.x + self.zxWidth / 2) / self.zxWidth);
+        if (page != self.selectedIndex) {
+            [self.ccvList selectItemAtIndexPath:[NSIndexPath indexPathForRow:page inSection:0] animated:true scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+            self.selectedIndex = page;
+        }
     }
-    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
