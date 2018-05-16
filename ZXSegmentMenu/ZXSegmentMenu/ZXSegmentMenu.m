@@ -153,6 +153,9 @@
 
 - (void)setSelectedIndex:(NSInteger)selectedIndex {
     _selectedIndex = selectedIndex;
+    if (_delegate && [_delegate respondsToSelector:@selector(zxSegmentMenu:selectedAtIndex:)]) {
+        [_delegate zxSegmentMenu:self selectedAtIndex:selectedIndex];
+    }
     if (self.selectedIndex < self.dataCount) {
         [self.ccvList selectItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] animated:true scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     }
@@ -161,10 +164,10 @@
 #pragma mark - UIColletionView
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (_delegate && [_delegate respondsToSelector:@selector(zxSegmentMenu:selectedAtIndex:)]) {
-        [_delegate zxSegmentMenu:self selectedAtIndex:indexPath.row];
-    }
     self.selectedIndex = indexPath.row;
+//    if (_delegate && [_delegate respondsToSelector:@selector(zxSegmentMenu:selectedAtIndex:)]) {
+//        [_delegate zxSegmentMenu:self selectedAtIndex:indexPath.row];
+//    }
     self.zxContentView.contentOffset = CGPointMake(self.zxWidth * indexPath.row, 0);
 }
 
