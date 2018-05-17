@@ -40,7 +40,7 @@
             navBarHeight = pVC.navigationController.navigationBar.frame.size.height;
             navBarHeight += 20;
         }
-        if (pVC.tabBarController) {
+        if (pVC.tabBarController && pVC.tabBarController.tabBar.window) {
             tabBarHeight = pVC.tabBarController.tabBar.frame.size.height;
         }
         if (ZX_IS_iPhoneX) {
